@@ -82,11 +82,12 @@ async def handler(event):
     links =event.text.split(" ")[1]
     print(links)
   #  print("hi")
-    with open("storage/dcim/605/telegram/"+links, 'wb') as fd:
+    with open("./Download/"+links, 'wb') as fd:
         async for chunk in client.iter_download(dw.media):
             fd.write(chunk)
             print("hh")
-    await client.send_message(chat,links,file="storage/dcim/605/telegram/"+links,force_document=True)
+    await client.send_message(chat,links,file="./Download/"+links,force_document=True)
+    os.remove("./Download/"+links)
    # for x in dw:
         
 
@@ -107,6 +108,7 @@ async def handler(event):
    # print(dw)
     #if os.path.exists(links):
      #   await client.send_file(chat,links,force_document=True)
+
     #path = await client.download_media(message)
     
    # path = await client.download_media(event.message)
