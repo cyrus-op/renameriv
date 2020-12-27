@@ -70,9 +70,9 @@ async def handler(event):
 
     #chat = await event.get_media()
     #chat = await event.get_media()
-def callback(current, total):
-    print('Downloaded', current, 'out of', total,
-          'bytes: {:.2%}'.format(current / total))
+#def callback(current, total):
+  #  print('Downloaded', current, 'out of', total,
+   #       'bytes: {:.2%}'.format(current / total))
 @client.on(events.NewMessage(pattern='(?i)/rename'))
 
 async def handler(event):
