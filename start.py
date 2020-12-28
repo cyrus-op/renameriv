@@ -67,20 +67,26 @@ async def handler(event):
     dw = await event.get_reply_message()
     links =event.text.split(" ")[1]
     print(links)
-    with open("./Download/"+links, 'wb') as fd:
+    ss=await dw.download_media("filename")
 
-            async for chunk in client.iter_download(dw.media):
+    await client.send_message(chat,ss+"renaming")
 
-                fd.write(chunk)
+    os.rename(ss,links)
+    await client.send_file(chat,links)
+   # with open("./Download/"+links, 'wb') as fd:
 
-                print("hh")
+            #async for chunk in client.iter_download(dw.media):
 
-                await client.send_message(chat,links,file="./Download/"+links,force_document=True)
-                time.sleep(50)
+               # fd.write(chunk)
+
+               # print("hh")
+
+               # await client.send_message(chat,links,file="./Download/"+links,force_document=True)
+               # time.sleep(50)
 
              #   await client.send_message(chat,"file uploaded over streaming")
 
-                os.remove("./Download/"+links)
+              #  os.remove("./Download/"+links)
     #if not os.path.exists("./Download/"+chat.username+"/n.jpg"):
     # with open("./Download/"+links, 'wb') as fd:
           #  async for chunk in client.iter_download(dw.media):
