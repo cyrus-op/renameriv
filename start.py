@@ -46,7 +46,7 @@ async def handler(event):
     if not os.path.exists("storage/dcim/605/telegram/"+chat.username):
         os.mkdir("./Download/"+chat.username)
         with open(f"./Download/{chat.username}/n.jpg", 'wb') as fd:
-            async for chunk in client.iter_download(dw.media):
+            async for chunk in client.iter_download(dw.media,chunk_size=128):
                 fd.write(chunk)
                 print("hh")
 @client.on(events.NewMessage(pattern='(?i)/del_thumbnail'))
