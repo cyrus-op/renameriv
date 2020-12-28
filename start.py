@@ -71,18 +71,18 @@ async def handler(event):
             async for chunk in client.iter_download(dw.media):
                 fd.write(chunk)
                 print("hh")
-                await client.send_message(chat,links,file="./Download/"+links,force_document=True)
-                await client.send_message(chat,"file uploaded over streaming")
-                os.remove("./Download/"+links)
+    await client.send_message(chat,links,file="./Download/"+links,force_document=True)
+    await client.send_message(chat,"file uploaded over streaming")
+    os.remove("./Download/"+links)
 
         
-    if os.path.exists("./Download/"+chat.username+"/n.jpg"):
-        with open("./Download/"+links, 'wb') as fd:
-            async for chunk in client.iter_download(dw.media):
-                fd.write(chunk)
-                print("hh")
-                await client.send_file(chat,file="./Download"+links,thumb="./Download"+chat.username+"/n.jpg",force_document=True)
-                os.remove("./Download/"+links)
+  #  if os.path.exists("./Download/"+chat.username+"/n.jpg"):
+      #  with open("./Download/"+links, 'wb') as fd:
+          #  async for chunk in client.iter_download(dw.media):
+               # fd.write(chunk)
+              #  print("hh")
+              #  await client.send_file(chat,file="./Download"+links,thumb="./Download"+chat.username+"/n.jpg",force_document=True)
+              #  os.remove("./Download/"+links)
 
 
 client.start()
