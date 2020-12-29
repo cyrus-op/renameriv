@@ -38,26 +38,6 @@ client = TelegramClient('anfghvygggghbohn',os.getenv("a"),os.getenv("b")).start(
    
    
 
-@client.on(events.NewMessage(pattern='(?i)/thumbnail'))
-
-async def handler(event):
-
-    chat = await event.get_chat()
-
-    
-
-    print(chat.username)
-
-    dw = await event.get_reply_message()
-
-   # os.mkdir("/Download/"+chat.username)
-  #  os.chdir("/Download/"+chat.username)
-
-    ss=await dw.download_media(chat.username+".jpg")
-
-  #  with open(f"./Download/{chat.username}/n.jpg", 'wb') as fd:
-
-     #   async for chunk in client.iter_download(dw.media):
 
              #   fd.write(chunk)
 
@@ -80,17 +60,52 @@ async def handler(event):
   #  if not os.path.exists("storage/dcim/605/telegram/"+chat.username):
     #os.mkdir("./Download/"+chat.username)
     
-     #await client.send_message(chat,"thumbnail added")
+ 
+
+@client.on(events.NewMessage(pattern='(?i)/thumbnail'))
+
+async def handler(event):
+
+    chat = await event.get_chat()
+
+    
+
+    print(chat.username)
+
+    dw = await event.get_reply_message()
+
+    #links =event.text.split(" ")[1]
+
+  #  print(links)
+
+    if not os.path.exists("storage/dcim/605/telegram/"+chat.username):
+
+        os.mkdir("./Download/"+chat.username)
+
+        with open(f"./Download/{chat.username}/n.jpg", 'wb') as fd:
+
+            async for chunk in client.iter_download(dw.media,chunk_size=128):
+
+                fd.write(chunk)
+
+                print("hh")
+
 @client.on(events.NewMessage(pattern='(?i)/del_thumbnail'))
 
 async def handler(event):
+
     chat = await event.get_chat()
+
     
+
     print(chat.username)
-    os.remove(chat.username+".jpg")
+
     
+
     #dw = await event.get_reply_message()
-   # shutil.rmtree("./Download/"+chat.username)
+
+    shutil.rmtree("./Download/"+chat.username)
+
     await client.send_message(chat,"thumbnail deleted")
 @client.on(events.NewMessage(pattern='(?i)/rename'))
 async def handler(event):
