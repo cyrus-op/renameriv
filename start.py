@@ -1,7 +1,7 @@
 from telethon import TelegramClient, events, Button
     #import requests
 #from bs4 import BeautifulSoup as BS
-
+import cryptg
 import asyncio
 import time
 
@@ -73,6 +73,7 @@ async def handler(event):
 
     os.rename(ss,links)
     await client.send_file(chat,links)
+    os.remove(links)
    # with open("./Download/"+links, 'wb') as fd:
 
             #async for chunk in client.iter_download(dw.media):
