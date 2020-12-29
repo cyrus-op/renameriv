@@ -1,4 +1,6 @@
 requests==2.24.0
 telethon
 youtube-dl
-cryptg hachoir pillow
+cryptg
+hachoir
+pillow
