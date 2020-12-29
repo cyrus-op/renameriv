@@ -11,6 +11,7 @@ support my YouTube channel for more open source code
 https://m.youtube.com/channel/UCLHZQApnu1vN2j7fKDgv74w
 demo at https://t.me/infinitrotorrenticBot
 <img src="hub.com/Nirmalraj10567/zee5-dl-bot/raw/main/Download/2020-11-29_13_24_35.jpg"></img>
+<br>command list</br>
 <br>/thumbnail  -thumbnail set</br>
 <br>/rename - rename file</br>
 <br>/del_thumbnail -delete thumbnail</br>
