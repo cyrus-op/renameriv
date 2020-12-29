@@ -113,7 +113,7 @@ async def handler(event):
     print(chat)
     dw = await event.get_reply_message()
     links =event.text.split(" ")[1]
-    if not os.path.exists(chat.username+".jpg"):
+    if not os.path.exists(f"./Download/{chat.username}/n.jpg"):
 
         ss=await dw.download_media("filename")
 
@@ -121,11 +121,11 @@ async def handler(event):
 
         os.rename(ss,links)
 
-        await client.send_file(chat,links)
+        await client.send_message(chat,links,file=links)
 
         os.remove(links)
 
-    if os.path.exists(chat.username+".jpg"):
+    if os.path.exists(f"./Download/{chat.username}/n.jpg"):
 
         ss=await dw.download_media("filename")
 
