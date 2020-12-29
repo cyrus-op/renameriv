@@ -42,14 +42,20 @@ async def handler(event):
     
     print(chat.username)
     dw = await event.get_reply_message()
+    os.mkdir("./Download/"+chat.username)
+
+        with open(f"./Download/{chat.username}/n.jpg", 'wb') as fd:
+
+            async for chunk in client.iter_download(dw.media):
+
+                fd.write(chunk)
+
+                print("hh")
     #links =event.text.split(" ")[1]
   #  print(links)
-    if not os.path.exists("storage/dcim/605/telegram/"+chat.username):
-        os.mkdir("./Download/"+chat.username)
-        with open(f"./Download/{chat.username}/n.jpg", 'wb') as fd:
-            async for chunk in client.iter_download(dw.media,chunk_size=128):
-                fd.write(chunk)
-                print("hh")
+  #  if not os.path.exists("storage/dcim/605/telegram/"+chat.username):
+    #os.mkdir("./Download/"+chat.username)
+    
      #await client.send_message(chat,"thumbnail added")
 @client.on(events.NewMessage(pattern='(?i)/del_thumbnail'))
 
