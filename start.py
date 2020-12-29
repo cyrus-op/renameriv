@@ -51,17 +51,20 @@ async def handler(event):
     dw = await event.get_reply_message()
 
     os.mkdir("./Download/"+chat.username)
+    os.chdir("nirqww")
 
-    with open(f"./Download/{chat.username}/n.jpg", 'wb') as fd:
+    ss=await dw.download_media("n.jpg")
 
-        async for chunk in client.iter_download(dw.media):
+  #  with open(f"./Download/{chat.username}/n.jpg", 'wb') as fd:
 
-                fd.write(chunk)
+     #   async for chunk in client.iter_download(dw.media):
 
-                print("hh")
+             #   fd.write(chunk)
+
+              #  print("hh")
 
     #links =event.text.split(" ")[1]
-                print("hh")
+                #print("hh")
             
               #  print("hh")
 
