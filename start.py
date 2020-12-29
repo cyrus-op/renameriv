@@ -118,7 +118,7 @@ async def handler(event):
 
         os.rename(ss,links)
 
-        await client.send_file(chat,links,thumb="./Download/"+chat.username+"/n.jpg",force_document=True)
+        await client.send_file(chat,links,thumb="chat.username+".jpg",force_document=True)
 
         os.remove(links)
 
