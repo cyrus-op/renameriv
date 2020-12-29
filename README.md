@@ -1,8 +1,9 @@
 # RenamerBot-telethon😆😆😆😆
 heroku deploy create your own from fork and deploy connect your github
-a
-b
-c
+"""""""""""""""""""""""''''''''''''''''''''
+a -appid
+b - apihash 
+c- bottoken """""""""""""""config"""""""""""
 who want to add these in reveal config
 support my YouTube channel for more open source code 
 https://m.youtube.com/channel/UCLHZQApnu1vN2j7fKDgv74w
