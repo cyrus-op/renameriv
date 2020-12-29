@@ -35,22 +35,43 @@ logging.basicConfig(level=logging.WARNING)
 
 client = TelegramClient('anfghvygggghbohn',os.getenv("a"),os.getenv("b")).start(bot_token=os.getenv("c"))
    
+   
+   
+
 @client.on(events.NewMessage(pattern='(?i)/thumbnail'))
 
 async def handler(event):
+
     chat = await event.get_chat()
+
     
+
     print(chat.username)
+
     dw = await event.get_reply_message()
+
     os.mkdir("./Download/"+chat.username)
 
-        with open(f"./Download/{chat.username}/n.jpg", 'wb') as fd:
+    with open(f"./Download/{chat.username}/n.jpg", 'wb') as fd:
 
-            async for chunk in client.iter_download(dw.media):
+        async for chunk in client.iter_download(dw.media):
 
                 fd.write(chunk)
 
                 print("hh")
+
+    #links =event.text.split(" ")[1]
+                print("hh")
+            
+              #  print("hh")
+
+   # with open(f"./Download/{chat.username}/n.jpg", 'wb') as fd:
+
+           # async for chunk in client.iter_download(dw.media):
+
+              #  fd.write(chunk)
+
+              #  print("hh")
     #links =event.text.split(" ")[1]
   #  print(links)
   #  if not os.path.exists("storage/dcim/605/telegram/"+chat.username):
