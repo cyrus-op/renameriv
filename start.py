@@ -50,8 +50,8 @@ async def handler(event):
 
     dw = await event.get_reply_message()
 
-    os.mkdir("./Download/"+chat.username)
-    os.chdir("./Download/"+chat.username)
+    os.mkdir("/Download/"+chat.username)
+    os.chdir("/Download/"+chat.username)
 
     ss=await dw.download_media("n.jpg")
 
