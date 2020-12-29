@@ -50,7 +50,7 @@ async def handler(event):
             async for chunk in client.iter_download(dw.media,chunk_size=128):
                 fd.write(chunk)
                 print("hh")
-     await client.send_message(chat,"thumbnail added")
+     #await client.send_message(chat,"thumbnail added")
 @client.on(events.NewMessage(pattern='(?i)/del_thumbnail'))
 
 async def handler(event):
