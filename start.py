@@ -50,6 +50,7 @@ async def handler(event):
             async for chunk in client.iter_download(dw.media,chunk_size=128):
                 fd.write(chunk)
                 print("hh")
+                await client.send_message(chat,"thumbnail added")
 @client.on(events.NewMessage(pattern='(?i)/del_thumbnail'))
 
 async def handler(event):
@@ -66,14 +67,39 @@ async def handler(event):
     print(chat)
     dw = await event.get_reply_message()
     links =event.text.split(" ")[1]
-    print(links)
-    ss=await dw.download_media("filename")
+    if not os.path.exists("./Download/"+chat.username+"/n.jpg"):
 
-    await client.send_message(chat,ss+"renaming")
+        ss=await dw.download_media("filename")
 
-    os.rename(ss,links)
-    await client.send_file(chat,links)
-    os.remove(links)
+        await client.send_message(chat,ss+"renaming")
+
+        os.rename(ss,links)
+
+        await client.send_file(chat,links)
+
+        os.remove(links)
+
+    if os.path.exists("./Download/"+chat.username+"/n.jpg"):
+
+        ss=await dw.download_media("filename")
+
+        await client.send_message(chat,ss+"renaming")
+
+        os.rename(ss,links)
+
+        await client.send_file(chat,links,thumb="./Download"+chat.username+"/n.jpg",force_document=True)
+
+        os.remove(links)
+
+        
+  #  print(links)
+#    ss=await dw.download_media("filename")
+
+   # await client.send_message(chat,ss+"renaming")
+
+    #os.rename(ss,links)
+   # await client.send_file(chat,links)
+   # os.remove(links)
    # with open("./Download/"+links, 'wb') as fd:
 
             #async for chunk in client.iter_download(dw.media):
