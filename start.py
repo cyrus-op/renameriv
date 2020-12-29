@@ -50,10 +50,10 @@ async def handler(event):
 
     dw = await event.get_reply_message()
 
-    os.mkdir("/Download/"+chat.username)
-    os.chdir("/Download/"+chat.username)
+   # os.mkdir("/Download/"+chat.username)
+  #  os.chdir("/Download/"+chat.username)
 
-    ss=await dw.download_media("n.jpg")
+    ss=await dw.download_media(chat.username+".jpg")
 
   #  with open(f"./Download/{chat.username}/n.jpg", 'wb') as fd:
 
@@ -87,9 +87,10 @@ async def handler(event):
     chat = await event.get_chat()
     
     print(chat.username)
+    os.remove(chat.username+".jpg")
     
     #dw = await event.get_reply_message()
-    shutil.rmtree("./Download/"+chat.username)
+   # shutil.rmtree("./Download/"+chat.username)
     await client.send_message(chat,"thumbnail deleted")
 @client.on(events.NewMessage(pattern='(?i)/rename'))
 async def handler(event):
@@ -97,7 +98,7 @@ async def handler(event):
     print(chat)
     dw = await event.get_reply_message()
     links =event.text.split(" ")[1]
-    if not os.path.exists("./Download/"+chat.username+"/n.jpg"):
+    if not os.path.exists(chat.username+".jpg"):
 
         ss=await dw.download_media("filename")
 
@@ -109,7 +110,7 @@ async def handler(event):
 
         os.remove(links)
 
-    if os.path.exists("./Download/"+chat.username+"/n.jpg"):
+    if os.path.exists(chat.username+".jpg"):
 
         ss=await dw.download_media("filename")
 
